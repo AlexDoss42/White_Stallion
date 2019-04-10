@@ -22,3 +22,23 @@ let serviceLog = [
     Date: '11/25/18'
   }
 ]
+
+module.exports = {
+  read: (req, res) => res.send(serviceLog),
+
+  create: (req, res) => {
+
+    res.send(serviceLog)
+  },
+
+  update: (req, res) => {
+
+    res.send(serviceLog)
+  },
+
+  delete: (req, res) => {
+
+    res.send(serviceLog)
+  }
+
+}
