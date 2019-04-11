@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import ServiceRecord from './ServiceRecord'
+import AddServiceRecord from './AddServiceRecord';
 
 
 class ServiceLog extends Component {
@@ -19,6 +20,14 @@ class ServiceLog extends Component {
         ServiceLog: res.data
       })
     }).catch(err => console.log('Houston we have a problem: ', err))
+  }
+
+  addServiceRecord = (newServiceRecord) => {
+    axios.post('/api/service', newServiceRecord).then(res => {
+      this.setState({
+        ServiceLog: res.data
+      })
+    }).catch(err => console.log('Houston, we have a problem: ', err))
   }
 
   updateServiceRecord = (serviceRecord) => {
@@ -41,6 +50,9 @@ class ServiceLog extends Component {
   render() {
     return (
       <div>
+        <AddServiceRecord 
+        addServiceRecord = {this.addServiceRecord}/>
+
         {this.state.ServiceLog.map(serviceRecord => {
           return <ServiceRecord
                   key = { serviceRecord.id }

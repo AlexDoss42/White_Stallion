@@ -32,7 +32,7 @@ module.exports = {
     let newServiceRecord = req.body
     newServiceRecord.id = id++
       
-      serviceLog.push(newServiceRecord)
+      serviceLog.unshift(newServiceRecord)
       res.send(serviceLog)
     },
     
