@@ -2,21 +2,21 @@ let id = 1
 let serviceLog = [
   {
     id: id++,
-    price: '$50.00',
+    price: 50,
     milesDriven: 52000,
     partName: 'BrakePads',
     dateOfService: '5/5/18'
   },
   {
     id: id++,
-    price: '$500.00',
+    price: 500,
     milesDriven: 55000,
     partName: 'AC Compressor',
     dateOfService: '7/3/18'
   },
   {
     id: id++,
-    price: '$150.00',
+    price: 150,
     milesDriven: 86000,
     partName: 'Radiator',
     dateOfService: '12/25/18'
