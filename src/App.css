@@ -6,7 +6,14 @@
 
 body {
   background: black;
-  color: white
+  color: white;
+  font-family: 'pinyon script', cursive
+}
+
+button {
+  height: 30px;
+  width: 50px;
+  border-radius: 10px;
 }
 
 .headerComponent {
@@ -17,10 +24,21 @@ body {
   align-content: center;
 }
 
+.logo {
+  width: 12vw
+}
 
 .navIcons {
   width: 12vw;
   display: flex;
   justify-content: space-between;
   align-items: center
+}
+
+.addInputs {
+
+}
+
+.editInputs {
+
 }

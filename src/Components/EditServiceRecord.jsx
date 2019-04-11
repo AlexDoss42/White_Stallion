@@ -61,7 +61,7 @@ class EditServiceRecord extends Component {
         placeholder = 'mm/dd/yy'
         />
 
-        <button onClick={this.handleClick}>Update Service Record</button>
+        <button onClick={this.handleClick}>Save</button>
       </div>
     )
   }
