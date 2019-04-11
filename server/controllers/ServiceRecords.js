@@ -25,6 +25,8 @@ let serviceLog = [
 
 module.exports = {
   
+  read: (req, res) => res.send(serviceLog),
+  
   create: (req, res) => {
     
     let newServiceRecord = req.body
@@ -34,8 +36,6 @@ module.exports = {
       res.send(serviceLog)
     },
     
-  read: (req, res) => res.send(serviceLog),
-  
   update: (req, res) => {
 
     let { id } = req.params

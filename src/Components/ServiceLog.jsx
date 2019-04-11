@@ -25,8 +25,17 @@ class ServiceLog extends Component {
     axios.put(`/api/service/${serviceRecord.id}`, serviceRecord).then(res => {
       this.setState({
         ServiceLog: res.data
-      })
-    }).catch(err => console.log('Houston, we have a problem: ', err))
+      })})
+      .catch(err => console.log('Houston, we have a problem: ', err))
+  }
+
+  deleteServiceRecord = (serviceRecord) => {
+    console.log(serviceRecord)
+    axios.delete(`/api/service/${serviceRecord.id}`, serviceRecord)
+    .then(res => { 
+      this.setState({ 
+        ServiceLog: res.data})})
+        .catch(err => console.log('Houston, we have a problem: ', err))
   }
 
   render() {
@@ -36,7 +45,8 @@ class ServiceLog extends Component {
           return <ServiceRecord
                   key = { serviceRecord.id }
                   serviceRecord = { serviceRecord }
-                  updateServiceRecord = { this.updateServiceRecord }/>
+                  updateServiceRecord = { this.updateServiceRecord }
+                  deleteServiceRecord = { this.deleteServiceRecord }/>
         })}       
       </div>
     )

@@ -15,10 +15,13 @@ class ServiceRecord extends Component {
       edit: !this.state.edit
     })
   }
+
   render() {
     let { serviceRecord } = this.props
     return (
-      this.state.edit ? <EditServiceRecord serviceRecord = { serviceRecord } updateServiceRecord = { this.props.updateServiceRecord } 
+      this.state.edit ? 
+      <EditServiceRecord 
+      serviceRecord = { serviceRecord } updateServiceRecord = { this.props.updateServiceRecord } 
       toggleEdit = {this.toggleEdit} /> :
 
       <div style=  {{border: '1px solid grey', margin: 20, padding: 10}}>
@@ -29,7 +32,7 @@ class ServiceRecord extends Component {
         <p>dateOfService: { serviceRecord.dateOfService }</p>
 
         <button onClick={this.toggleEdit}>Edit Log</button>
-        <button>Delete</button>
+        <button onClick={() => {this.props.deleteServiceRecord(serviceRecord)}}>Delete</button>
 
       </div>
     )
