@@ -56,7 +56,7 @@ class EditServiceRecord extends Component {
         <input
         onChange = {this.handleChange}
         name = 'dateOfService'
-        type = 'text'
+        type = 'date'
         value = {this.state.dateOfService}
         placeholder = 'mm/dd/yy'
         />

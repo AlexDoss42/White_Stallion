@@ -53,11 +53,12 @@ class AddServiceRecord extends Component {
         <input
         onChange = {this.handleChange}
         name = 'dateOfService'
-        type = 'text'
+        type = 'date'
         placeholder = 'mm/dd/yy'
         />
 
         <button onClick={this.handleClick}>Add Service Record</button>
+
       </div>
     )
   }
