@@ -11,6 +11,8 @@ class ServiceRecord extends Component {
         <p>milesDriven: { serviceRecord.milesDriven }</p>
         <p>partName: { serviceRecord.partName }</p>
         <p>dateOfService: { serviceRecord.dateOfService }</p>
+        <button>Edit Log</button>
+        <button>Delete</button>
       </div>
     )
   }

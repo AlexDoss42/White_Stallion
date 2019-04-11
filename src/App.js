@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import ServiceLog from './Components/ServiceLog'
+import Header from './Components/Header'
+import Footer from './Components/Footer'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          
-          <h1>Manos Arribas</h1>
-          
-        </header>
+
+        <Header />
 
         <ServiceLog />
 
+        <Footer />
       </div>
     );
   }
