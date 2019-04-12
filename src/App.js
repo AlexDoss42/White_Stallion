@@ -11,7 +11,8 @@ class App extends Component {
     super()
 
     this.state = {
-      Homepage: true
+      Homepage: true,
+      ToggleSearchBar: false
     }
   }
 
@@ -27,6 +28,12 @@ class App extends Component {
     })
   }
 
+  toggleSearch = () => {
+    this.setState({
+      ToggleSearchBar: !this.state.ToggleSearchBar
+    })
+  }
+
   render() {
     return (
       this.state.Homepage ?
@@ -34,7 +41,9 @@ class App extends Component {
         <div className="App" id='AddServicePage'>
           <Header 
           toggleHome = { this.toggleHome }
-          toggleAdd = { this.toggleAdd }/>
+          toggleAdd = { this.toggleAdd }
+          toggleSearch = { this.toggleSearch }
+          ToggleSearchBar = {this.state.ToggleSearchBar }/>
           <ServiceLog />
           <Footer /> 
         </div>

@@ -15,7 +15,7 @@ body {
 
 i {
   color: whitesmoke;
-  margin: 5px;
+  margin: 5px 10px;
 }
 
 input {
@@ -32,11 +32,16 @@ input {
   font-weight: 700
 }
 
+* :focus {
+  outline: none
+}
+
 ::placeholder {
   color: whitesmoke
 }
 
 .headerComponent {
+  height: 20vh;
   width: 96vw;
   margin: 2vh 2vw;
   display: flex;
@@ -45,17 +50,27 @@ input {
 }
 
 .logo {
-  width: 12vw;
+  width: 15vw;
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: top
 }
 
 .navIcons {
-  width: 12vw;
+  width: 15vw;
   display: flex;
-  justify-content: space-between;
-  align-items: center
+  justify-content: flex-end;
+}
+
+.searchInput {
+  width: 15vw;
+  margin: 0
+}
+
+.navPlusSearchBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: right
 }
 
 .addInputs {

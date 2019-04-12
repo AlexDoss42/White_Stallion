@@ -36,12 +36,12 @@ class ServiceRecord extends Component {
         <div className='serviceRecordButtons'>
   
           <i 
-          class="far fa-edit"
+          className="far fa-edit"
           onClick={this.toggleEdit}
           ></i>
 
           <i 
-          class="far fa-trash-alt"
+          className="far fa-trash-alt"
           onClick={() => {this.props.deleteServiceRecord(serviceRecord)}}
           ></i>
           

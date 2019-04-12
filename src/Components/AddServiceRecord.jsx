@@ -84,7 +84,7 @@ class AddServiceRecord extends Component {
         />
 
         <i 
-        class="fas fa-plus"
+        className="fas fa-plus"
         onClick={this.handleClick}
         ></i>
 

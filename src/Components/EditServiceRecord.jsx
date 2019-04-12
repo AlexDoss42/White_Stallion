@@ -78,12 +78,12 @@ class EditServiceRecord extends Component {
 
         <div className='editBtns'>
           <i 
-          class="far fa-save"
+          className="far fa-save"
           onClick={this.handleClick}
           ></i>
 
           <i 
-          class="far fa-window-close"
+          className="far fa-window-close"
           onClick={this.props.toggleEdit}
           ></i>
         </div>
