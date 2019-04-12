@@ -24,13 +24,13 @@ class ServiceRecord extends Component {
       serviceRecord = { serviceRecord } updateServiceRecord = { this.props.updateServiceRecord } 
       toggleEdit = {this.toggleEdit} /> :
 
-      <div className='ServiceRecord' style=  {{border: '1px solid grey', margin: 20, padding: 10}}>
+      <div className='ServiceRecord'>
 
         <div className='serviceRecordData'>
-          <p>price: { serviceRecord.price }</p>
-          <p>milesDriven: { serviceRecord.milesDriven }</p>
-          <p>partName: { serviceRecord.partName }</p>
-          <p>dateOfService: { serviceRecord.dateOfService }</p>
+          <p>Price: { serviceRecord.price }</p>
+          <p>Miles Driven: { serviceRecord.milesDriven }</p>
+          <p>part Name: { serviceRecord.partName }</p>
+          <p>Date of Service: { serviceRecord.dateOfService }</p>
         </div>
 
         <div className='serviceRecordButtons'>

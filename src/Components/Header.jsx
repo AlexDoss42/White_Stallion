@@ -9,17 +9,17 @@ class Header extends Component {
       (this.props.ToggleSearchBar === false) ?
 
       <div className='headerComponent'>
+
         <div className='logo'>
           <i 
           className="fas fa-car-side fa-2x"
           onClick= {() => {this.props.toggleHome()}}
           ></i>
+
         </div>
-        <div>
-          <header>
-            <h1>El SEMENTAL BLANCO</h1>
-          </header>
-        </div>
+        
+        <h1>El SEMENTAL BLANCO</h1>
+
         <div className='navIcons'>
           <i 
           className="fas fa-plus fa-2x"
@@ -34,17 +34,15 @@ class Header extends Component {
       :
 
       <div className='headerComponent'>
+
         <div className='logo'>
           <i 
           className="fas fa-car-side fa-2x"
           onClick= {() => {this.props.toggleHome()}}
           ></i>
         </div>
-        <div>
-          <header>
-            <h1>El SEMENTAL BLANCO</h1>
-          </header>
-        </div>
+
+        <h1>El SEMENTAL BLANCO</h1>
 
         <div className='navPlusSearchBar'>
 
@@ -58,10 +56,8 @@ class Header extends Component {
             ></i>
           </div>
 
-          <div>
-            <input type="text" className='searchInput'/>
-          </div>
-
+          <input type="text" className='searchInput'/>
+         
         </div>
 
       </div>

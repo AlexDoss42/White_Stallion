@@ -4,7 +4,7 @@ let serviceLog = [
     id: id++,
     price: 50,
     milesDriven: 52000,
-    partName: 'BrakePads',
+    partName: 'Brake Pads',
     dateOfService: '5/5/18'
   },
   {
