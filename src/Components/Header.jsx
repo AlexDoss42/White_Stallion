@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import AddServiceRecord from './AddServiceRecord'
 
 class Header extends Component {
 

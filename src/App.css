@@ -6,14 +6,34 @@
 
 body {
   background: black;
-  color: white;
-  font-family: 'pinyon script', cursive
+  color: whitesmoke;
+  font-size: 1.5rem;
+  font-family: 'pinyon script', -apple-system, BlinkMacSystemFont, cursive;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
-button {
-  height: 30px;
-  width: 50px;
+i {
+  color: whitesmoke;
+  margin: 5px;
+}
+
+input {
+  background: rgba(0,0,0,0);
+  color: whitesmoke;
+  margin: 5px;
+  height: 50px;
+  width: 190px;
   border-radius: 10px;
+  font-family: 'pinyon script', cursive;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700
+}
+
+::placeholder {
+  color: whitesmoke
 }
 
 .headerComponent {
@@ -25,7 +45,10 @@ button {
 }
 
 .logo {
-  width: 12vw
+  width: 12vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
 }
 
 .navIcons {
@@ -36,9 +59,49 @@ button {
 }
 
 .addInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center
+}
 
+.servicelog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row
+}
+
+.serviceRecordData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center
+}
+
+.serviceRecordButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center
 }
 
 .editInputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center
+}
 
+.editBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+ footer {
+  width: 96vw;
+  margin: 2vh 2vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
 }

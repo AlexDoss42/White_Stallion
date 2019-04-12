@@ -50,7 +50,7 @@ class EditServiceRecord extends Component {
         name = 'partName'
         type = 'text'
         value = {this.state.partName}
-        placeholder = 'Name of the part'
+        placeholder = 'Part Name'
         />
 
         <input
@@ -61,7 +61,17 @@ class EditServiceRecord extends Component {
         placeholder = 'mm/dd/yy'
         />
 
-        <button onClick={this.handleClick}>Save</button>
+        <div className='editBtns'>
+          <i 
+          class="far fa-save"
+          onClick={this.handleClick}
+          ></i>
+
+          <i 
+          class="far fa-window-close"
+          onClick={this.props.toggleEdit}
+          ></i>
+        </div>
       </div>
     )
   }

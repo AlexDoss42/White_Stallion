@@ -49,7 +49,7 @@ class ServiceLog extends Component {
 
   render() {
     return (
-      <div>
+      <div className='ServiceLog'>
         <AddServiceRecord 
         addServiceRecord = {this.addServiceRecord}/>
 

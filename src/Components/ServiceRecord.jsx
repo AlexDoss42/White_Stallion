@@ -24,15 +24,28 @@ class ServiceRecord extends Component {
       serviceRecord = { serviceRecord } updateServiceRecord = { this.props.updateServiceRecord } 
       toggleEdit = {this.toggleEdit} /> :
 
-      <div style=  {{border: '1px solid grey', margin: 20, padding: 10}}>
+      <div className='ServiceRecord' style=  {{border: '1px solid grey', margin: 20, padding: 10}}>
 
-        <p>price: { serviceRecord.price }</p>
-        <p>milesDriven: { serviceRecord.milesDriven }</p>
-        <p>partName: { serviceRecord.partName }</p>
-        <p>dateOfService: { serviceRecord.dateOfService }</p>
+        <div className='serviceRecordData'>
+          <p>price: { serviceRecord.price }</p>
+          <p>milesDriven: { serviceRecord.milesDriven }</p>
+          <p>partName: { serviceRecord.partName }</p>
+          <p>dateOfService: { serviceRecord.dateOfService }</p>
+        </div>
 
-        <button onClick={this.toggleEdit}>Edit Log</button>
-        <button onClick={() => {this.props.deleteServiceRecord(serviceRecord)}}>Delete</button>
+        <div className='serviceRecordButtons'>
+  
+          <i 
+          class="far fa-edit"
+          onClick={this.toggleEdit}
+          ></i>
+
+          <i 
+          class="far fa-trash-alt"
+          onClick={() => {this.props.deleteServiceRecord(serviceRecord)}}
+          ></i>
+          
+        </div>
 
       </div>
     )

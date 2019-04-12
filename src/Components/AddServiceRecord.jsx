@@ -47,7 +47,7 @@ class AddServiceRecord extends Component {
         onChange = {this.handleChange}
         name = 'partName'
         type = 'text'
-        placeholder = 'Name of the part'
+        placeholder = 'Part Name'
         />
 
         <input
@@ -57,7 +57,7 @@ class AddServiceRecord extends Component {
         placeholder = 'mm/dd/yy'
         />
 
-        <button onClick={this.handleClick}>Add Service Record</button>
+        <button onClick={this.handleClick}>Add</button>
 
       </div>
     )

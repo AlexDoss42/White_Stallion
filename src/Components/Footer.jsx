@@ -5,8 +5,8 @@ class Footer extends Component {
   render() {
 
     return (
-      <div>
-        <header>
+      <div className='footerContent'>
+        <footer>
           <div className='contactInfo'>
             <h5>White Stallion Inc.</h5>
             <h6>972-789-1234</h6>
@@ -15,7 +15,7 @@ class Footer extends Component {
           <div className='version'>
             <h6>v 1.0.0</h6>
           </div>
-        </header>
+        </footer>
       </div>
     )
   } 
