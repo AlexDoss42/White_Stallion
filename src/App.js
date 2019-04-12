@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       Homepage: true,
-      ToggleSearchBar: false
+      ToggleSearchBar: false,
+      searchValue: ''
     }
   }
 
@@ -34,6 +35,13 @@ class App extends Component {
     })
   }
 
+  search = (searchInput) => {
+    console.log(searchInput)
+    this.setState({
+      searchValue: searchInput.target.value
+    })
+  }
+
   render() {
     return (
       this.state.Homepage ?
@@ -43,8 +51,10 @@ class App extends Component {
           toggleHome = { this.toggleHome }
           toggleAdd = { this.toggleAdd }
           toggleSearch = { this.toggleSearch }
-          ToggleSearchBar = {this.state.ToggleSearchBar }/>
-          <ServiceLog />
+          ToggleSearchBar = {this.state.ToggleSearchBar }
+          search = { this.search }/>
+          <ServiceLog 
+          searchValue = { this.state.searchValue }/>
           <Footer /> 
         </div>
 

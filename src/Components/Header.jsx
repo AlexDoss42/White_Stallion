@@ -56,7 +56,9 @@ class Header extends Component {
             ></i>
           </div>
 
-          <input type="text" className='searchInput'/>
+          <input type="text" 
+          className='searchInput'
+          onChange = { this.props.search }/>
          
         </div>
 
