@@ -21,9 +21,24 @@ class EditServiceRecord extends Component {
   }
 
   handleClick = () => {
+
+    let { price, milesDriven, partName, dateOfService } = this.state
+
+    if(price === '') {
+      alert('Price is required')
+    } else if(milesDriven === '') {
+      alert('Odometer Reading is required')
+    } else if(partName === '') {
+      alert('Part Name is required')
+    } else if(dateOfService === '') {
+      alert('Service Date is required')
+    } else {
+
     let serviceRecord = {...this.props.serviceRecord, ...this.state}
+
     this.props.updateServiceRecord(serviceRecord)
     this.props.toggleEdit()
+    }
   }
 
   render () {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class AddServiceRecord extends Component {
   constructor(props) {
@@ -8,20 +9,44 @@ class AddServiceRecord extends Component {
       price: '',
       milesDriven: '',
       partName: '',
-      dateOfService: ''
+      dateOfService: '',
     }
   }
 
+  addServiceRecord = (newServiceRecord) => {
+    axios.post('/api/service', newServiceRecord).then(res => {
+      this.setState({
+        ServiceLog: res.data
+      })
+    }).catch(err => console.log('Houston, we have a problem: ', err))
+  }
+
   handleChange = (e) => {
-    let {value, name } = e.target 
+    let { value, name } = e.target 
     this.setState({
       [name]: value
     })
   }
 
   handleClick = () => {
-    let serviceRecord = {...this.props.serviceRecord, ...this.state}
-    this.props.addServiceRecord(serviceRecord)
+
+    let { price, milesDriven, partName, dateOfService } = this.state
+    
+    if(price === '') {
+      alert('Price is required')
+    } else if(milesDriven === '') {
+      alert('Odometer Reading is required')
+    } else if(partName === '') {
+      alert('Part Name is required')
+    } else if(dateOfService === '') {
+      alert('Service Date is required')
+    } else {
+      
+      let serviceRecord = {...this.props.serviceRecord, ...this.state}
+      
+      this.addServiceRecord(serviceRecord)
+      this.props.toggleHome()
+    }
   }
 
   render(){
@@ -34,6 +59,7 @@ class AddServiceRecord extends Component {
         name = 'price'
         type = 'number'
         placeholder = 'price'
+        required
         />
 
         <input
@@ -57,7 +83,10 @@ class AddServiceRecord extends Component {
         placeholder = 'mm/dd/yy'
         />
 
-        <button onClick={this.handleClick}>Add</button>
+        <i 
+        class="fas fa-plus"
+        onClick={this.handleClick}
+        ></i>
 
       </div>
     )
