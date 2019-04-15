@@ -66,7 +66,7 @@ class AddServiceRecord extends Component {
         onChange = {this.handleChange}
         name = 'milesDriven'
         type = 'number'
-        placeholder = 'Odometer Reading'
+        placeholder = 'Odometer'
         />
 
         <input
@@ -80,13 +80,22 @@ class AddServiceRecord extends Component {
         onChange = {this.handleChange}
         name = 'dateOfService'
         type = 'date'
-        placeholder = 'mm/dd/yy'
+        placeholder = 'mm/dd/yyyy'
         />
 
-        <i 
-        className="fas fa-plus"
-        onClick={this.handleClick}
-        ></i>
+        <div className='editBtns'>
+
+          <i 
+          className="fas fa-plus"
+          onClick={this.handleClick}
+          ></i>
+
+          <i 
+          className="far fa-window-close"
+          onClick={this.props.toggleHome}
+          ></i>
+
+        </div>
 
       </div>
     )

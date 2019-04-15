@@ -5,8 +5,8 @@ import ServiceRecord from './ServiceRecord'
 
 
 class ServiceLog extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       ServiceLog: []
@@ -42,13 +42,17 @@ class ServiceLog extends Component {
     return (
       <div className='ServiceLog'>
 
-        {this.state.ServiceLog.map(serviceRecord => {
+      {this.state.ServiceLog
+      // .filter(serviceRecord => {
+      //   return serviceRecord.value === this.props.searchValue
+      // })
+      .map(serviceRecord => {
           return <ServiceRecord
                   key = { serviceRecord.id }
                   serviceRecord = { serviceRecord }
                   updateServiceRecord = { this.updateServiceRecord }
                   deleteServiceRecord = { this.deleteServiceRecord }/>
-        })}       
+        })}      
       </div>
     )
   }

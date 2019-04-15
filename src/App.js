@@ -52,9 +52,11 @@ class App extends Component {
           toggleAdd = { this.toggleAdd }
           toggleSearch = { this.toggleSearch }
           ToggleSearchBar = {this.state.ToggleSearchBar }
-          search = { this.search }/>
+          // search = { this.search }
+          />
           <ServiceLog 
-          searchValue = { this.state.searchValue }/>
+          // searchValue = { this.state.searchValue }
+          />
           <Footer /> 
         </div>
 
@@ -63,7 +65,11 @@ class App extends Component {
       <div className="App" id='AddServicePage'>
           <Header 
           toggleHome = { this.toggleHome }
-          toggleAdd = { this.toggleAdd }/>
+          toggleAdd = { this.toggleAdd }
+          toggleSearch = { this.toggleSearch }
+          ToggleSearchBar = {this.state.ToggleSearchBar }
+          // search = { this.search }
+          />
           <AddServiceRecord 
           toggleHome = { this.toggleHome }/>
           <Footer /> 
