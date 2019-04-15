@@ -5,21 +5,21 @@ let serviceLog = [
     price: 50,
     milesDriven: 52000,
     partName: 'Brake Pads',
-    dateOfService: '5/5/18'
+    dateOfService: '2018-05-05'
   },
   {
     id: id++,
     price: 500,
     milesDriven: 55000,
     partName: 'AC Compressor',
-    dateOfService: '7/3/18'
+    dateOfService: '2018-07-05'
   },
   {
     id: id++,
     price: 150,
     milesDriven: 86000,
     partName: 'Radiator',
-    dateOfService: '12/25/18'
+    dateOfService: '2018-12-23'
   }
 ]
 
