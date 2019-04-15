@@ -22,6 +22,8 @@ class EditServiceRecord extends Component {
 
   handleClick = () => {
 
+// Makes sure you have values for each edit before it will update
+
     let { price, milesDriven, partName, dateOfService } = this.state
 
     if(price === '') {
@@ -34,6 +36,8 @@ class EditServiceRecord extends Component {
       alert('Service Date is required')
     } else {
 
+// Updates service record
+
     let serviceRecord = {...this.props.serviceRecord, ...this.state}
 
     this.props.updateServiceRecord(serviceRecord)
@@ -42,8 +46,11 @@ class EditServiceRecord extends Component {
   }
 
   render () {
+
     return (
+
       <div className='editInputs'>
+
         <input
         onChange = {this.handleChange}
         name = 'price'
@@ -77,16 +84,23 @@ class EditServiceRecord extends Component {
         />
 
         <div className='editBtns'>
+
+{/* Save Button */}
+
           <i 
           className="far fa-save"
           onClick={this.handleClick}
           ></i>
 
+{/* Cancel Button */}
+
           <i 
           className="far fa-window-close"
           onClick={this.props.toggleEdit}
           ></i>
+
         </div>
+        
       </div>
     )
   }

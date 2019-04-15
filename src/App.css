@@ -1,8 +1,12 @@
+/* Psuedo CSS reset file */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box
 }
+
+/* Universal styling */
 
 * :focus {
   outline: none
@@ -38,6 +42,8 @@ input {
 ::placeholder {
   color: whitesmoke
 }
+
+/* Header component */
 
 .headerComponent {
   height: 15vh;
@@ -76,6 +82,8 @@ input {
   justify-content: right
 }
 
+/* Add Page styling */
+
 .addInputs {
   display: flex;
   flex-direction: column;
@@ -83,12 +91,16 @@ input {
   align-items: center
 }
 
+/* Essentially the Hero of the 'home page' */
+
 .ServiceLog {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+/* Service Record */
 
 .ServiceRecord {
   width: 30vw;
@@ -110,6 +122,8 @@ input {
   align-items: center
 }
 
+/* Edit Page */
+
 .editInputs {
   display: flex;
   flex-direction: column;
@@ -122,6 +136,8 @@ input {
   justify-content: center;
   align-items: center
 }
+
+/* Footer section */
 
  footer {
   width: 96vw;

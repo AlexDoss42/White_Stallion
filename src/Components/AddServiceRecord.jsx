@@ -30,6 +30,8 @@ class AddServiceRecord extends Component {
 
   handleClick = () => {
 
+// Makes sure each input is filled out before submitting
+
     let { price, milesDriven, partName, dateOfService } = this.state
     
     if(price === '') {
@@ -41,6 +43,8 @@ class AddServiceRecord extends Component {
     } else if(dateOfService === '') {
       alert('Service Date is required')
     } else {
+
+// Adds a new service record to the service log
       
       let serviceRecord = {...this.props.serviceRecord, ...this.state}
       
@@ -59,7 +63,6 @@ class AddServiceRecord extends Component {
         name = 'price'
         type = 'number'
         placeholder = 'price'
-        required
         />
 
         <input
@@ -85,10 +88,14 @@ class AddServiceRecord extends Component {
 
         <div className='editBtns'>
 
+{/* Add Button */}
+
           <i 
           className="fas fa-plus"
           onClick={this.handleClick}
           ></i>
+        
+{/* Cancel Button */}
 
           <i 
           className="far fa-window-close"

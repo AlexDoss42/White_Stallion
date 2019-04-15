@@ -10,6 +10,8 @@ class App extends Component {
   constructor() {
     super()
 
+// Allows for toggling between pages and search bar appearing
+
     this.state = {
       Homepage: true,
       ToggleSearchBar: false,
@@ -17,11 +19,15 @@ class App extends Component {
     }
   }
 
+// Allows you to push the home button while on the add page and return to home but does nothing on the home page
+
   toggleHome = () => {
     this.setState({
       Homepage: true
     })
   }
+
+// Allows you to toggle to the add a service record page but does nothing on the add page
 
   toggleAdd = () => {
     this.setState({
@@ -29,11 +35,15 @@ class App extends Component {
     })
   }
 
+  // Toggles the search bar off and on all pages
+
   toggleSearch = () => {
     this.setState({
       ToggleSearchBar: !this.state.ToggleSearchBar
     })
   }
+
+// WORK IN PROGRESS!!! Grabs the searchbar input to filter service log
 
   search = (searchInput) => {
     console.log(searchInput)
@@ -46,7 +56,10 @@ class App extends Component {
     return (
       this.state.Homepage ?
 
+// Home page
+
         <div className="App" id='AddServicePage'>
+          
           <Header 
           toggleHome = { this.toggleHome }
           toggleAdd = { this.toggleAdd }
@@ -54,15 +67,21 @@ class App extends Component {
           ToggleSearchBar = {this.state.ToggleSearchBar }
           // search = { this.search }
           />
+
           <ServiceLog 
           // searchValue = { this.state.searchValue }
           />
+
           <Footer /> 
+
         </div>
 
       :
 
+// Add a service record page
+
       <div className="App" id='AddServicePage'>
+          
           <Header 
           toggleHome = { this.toggleHome }
           toggleAdd = { this.toggleAdd }
@@ -70,12 +89,13 @@ class App extends Component {
           ToggleSearchBar = {this.state.ToggleSearchBar }
           // search = { this.search }
           />
+          
           <AddServiceRecord 
           toggleHome = { this.toggleHome }/>
+          
           <Footer /> 
+
         </div>
-
-
 
     );
   }

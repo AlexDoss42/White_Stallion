@@ -13,6 +13,8 @@ class ServiceLog extends Component {
     }
   }
 
+// Displays the complete Service log upon Mounting
+
   componentDidMount() {
     axios.get('/api/service').then(res => {
       this.setState({
@@ -21,6 +23,8 @@ class ServiceLog extends Component {
     }).catch(err => console.log('Houston we have a problem: ', err))
   }
 
+// Allows you to edit each service record
+
   updateServiceRecord = (serviceRecord) => {
     axios.put(`/api/service/${serviceRecord.id}`, serviceRecord).then(res => {
       this.setState({
@@ -28,6 +32,8 @@ class ServiceLog extends Component {
       })})
       .catch(err => console.log('Houston, we have a problem: ', err))
   }
+
+// Allows you to delete a service record
 
   deleteServiceRecord = (serviceRecord) => {
     console.log(serviceRecord)
@@ -40,20 +46,29 @@ class ServiceLog extends Component {
 
   render() {
     return (
+
       <div className='ServiceLog'>
 
       {this.state.ServiceLog
+
+// used for the search function down the line 
+
       // .filter(serviceRecord => {
       //   return serviceRecord.value === this.props.searchValue
       // })
+
+// Renders each service record in the service log
+
       .map(serviceRecord => {
           return <ServiceRecord
                   key = { serviceRecord.id }
                   serviceRecord = { serviceRecord }
                   updateServiceRecord = { this.updateServiceRecord }
                   deleteServiceRecord = { this.deleteServiceRecord }/>
-        })}      
+        })}   
+
       </div>
+      
     )
   }
 }

@@ -5,6 +5,8 @@ class ServiceRecord extends Component {
   constructor(){
   super()
 
+// Creates the ILLUSION of a seond page
+
     this.state = {
       edit: false
     }
@@ -17,12 +19,25 @@ class ServiceRecord extends Component {
   }
 
   render() {
+    
     let { serviceRecord } = this.props
+    
     return (
+
+// Terinary to determine which "page" to render
+      
       this.state.edit ? 
+      
+// Edit Page
+      
       <EditServiceRecord 
-      serviceRecord = { serviceRecord } updateServiceRecord = { this.props.updateServiceRecord } 
-      toggleEdit = {this.toggleEdit} /> :
+      serviceRecord = { serviceRecord } 
+      updateServiceRecord = { this.props.updateServiceRecord } 
+      toggleEdit = {this.toggleEdit} /> 
+      
+      :
+
+// Normal Service record to be rendered in the service log
 
       <div className='ServiceRecord'>
 
@@ -34,11 +49,15 @@ class ServiceRecord extends Component {
         </div>
 
         <div className='serviceRecordButtons'>
+
+ {/* Edit Button */}
   
           <i 
           className="far fa-edit"
           onClick={this.toggleEdit}
           ></i>
+
+{/* Delete Button */}
 
           <i 
           className="far fa-trash-alt"
