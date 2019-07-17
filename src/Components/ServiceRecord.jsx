@@ -44,7 +44,7 @@ class ServiceRecord extends Component {
         <div className='serviceRecordData'>
           <p>Price: { serviceRecord.price }</p>
           <p>Miles Driven: { serviceRecord.milesDriven }</p>
-          <p>part Name: { serviceRecord.partName }</p>
+          <p>Part Name: { serviceRecord.partName }</p>
           <p>Date of Service: { serviceRecord.dateOfService }</p>
         </div>
 
