@@ -30,8 +30,9 @@ create table miles_log (
 
 create table service_records (
     service_id serial primary key,
-    price float(2),
+    price int,
     miles_driven int,
     part_name VARCHAR(50),
-    date_of_service date
+    -- date_of_service date,
+    vehicle_id int references vehicle(vehicle_id)
 )

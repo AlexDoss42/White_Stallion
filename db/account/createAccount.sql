@@ -6,7 +6,7 @@ insert into users (
     $1,
     $2,
     $3
-)
+);
 
 insert into user_login (
     password,
