@@ -26,8 +26,12 @@ massive(CONNECTION_STRING)
     console.log(`It's working! IT'S WORKING!!!`)
     console.log(db.listTables())
   })
+  .catch(err => {
+    console.log('error in database')
+    console.log(err)
+  })
 
-app.get('/api/service', ServiceCtrl.read)
+app.get('/api/service/:vehicle_id', ServiceCtrl.getRecordsById)
 app.post('/api/service', ServiceCtrl.create)
 app.put('/api/service/:id', ServiceCtrl.update)
 app.delete('/api/service/:id', ServiceCtrl.delete)

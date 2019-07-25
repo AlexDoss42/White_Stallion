@@ -1,31 +1,18 @@
-let id = 1
-let serviceLog = [
-  {
-    id: id++,
-    price: 50,
-    milesDriven: 52000,
-    partName: 'Brake Pads',
-    dateOfService: '2018-05-05'
-  },
-  {
-    id: id++,
-    price: 500,
-    milesDriven: 55000,
-    partName: 'AC Compressor',
-    dateOfService: '2018-07-05'
-  },
-  {
-    id: id++,
-    price: 150,
-    milesDriven: 86000,
-    partName: 'Radiator',
-    dateOfService: '2018-12-23'
-  }
-]
-
 module.exports = {
   
-  read: (req, res) => res.send(serviceLog),
+  getRecordsById: (req, res) => {
+    const db = req.app.get('db')
+    const { vehicle_id } = req.params
+    
+    db.service_records.getAllRecordsByVehicle([vehicle_id])
+    .then(data => {
+      res.status(200).send(data)
+    })
+    .catch(err => {
+      console.log('error in get records by id')
+      console.log(err)
+    })
+  },
   
   create: (req, res) => {
     

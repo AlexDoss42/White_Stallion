@@ -16,7 +16,8 @@ class ServiceLog extends Component {
 // Displays the complete Service log upon Mounting
 
   componentDidMount() {
-    axios.get('/api/service').then(res => {
+    axios.get('/api/service/1').then(res => {
+      console.log(res.data)
       this.setState({
         ServiceLog: res.data
       })
