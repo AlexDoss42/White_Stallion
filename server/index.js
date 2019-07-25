@@ -7,7 +7,7 @@ const ServiceCtrl = require('./controllers/ServiceRecords')
 
 const app = express()
 
-const { SESSION_SECRET, CONNECTION_STRING } = process.env
+const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
 
 app.use(express.json())
 
@@ -32,5 +32,4 @@ app.post('/api/service', ServiceCtrl.create)
 app.put('/api/service/:id', ServiceCtrl.update)
 app.delete('/api/service/:id', ServiceCtrl.delete)
 
-const port = 4242
-app.listen(port, () => console.log(`It's over Anakin! I have the ${port} port`))
+app.listen(SERVER_PORT, () => console.log(`It's over Anakin! I have the ${SERVER_PORT} port`))
