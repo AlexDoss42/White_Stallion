@@ -9,18 +9,18 @@ module.exports = {
       res.status(200).send(data)
     })
     .catch(err => {
-      console.log('error in get records by id')
+      console.log('error in get records by vehicle_id')
       console.log(err)
     })
   },
   
-  create: (req, res) => {
+  createServiceRecord: (req, res) => {
+    const db = req.app.get('db')
     
-    let newServiceRecord = req.body
-    newServiceRecord.id = id++
+    let { price, milesDriven, partName, dateOfService, vehicle_id } = req.body
       
-      serviceLog.unshift(newServiceRecord)
-      res.send(serviceLog)
+    db.service_records.createRecord([ price, milesDriven, partName, dateOfService, vehicle_id ])
+    .then()
     },
     
   update: (req, res) => {

@@ -24,7 +24,7 @@ class ServiceLog extends Component {
     }).catch(err => console.log('Houston we have a problem: ', err))
   }
 
-// Allows you to edit each service record
+// // Allows you to edit each service record
 
   updateServiceRecord = (serviceRecord) => {
     axios.put(`/api/service/${serviceRecord.id}`, serviceRecord).then(res => {

@@ -32,7 +32,7 @@ massive(CONNECTION_STRING)
   })
 
 app.get('/api/service/:vehicle_id', ServiceCtrl.getRecordsById)
-app.post('/api/service', ServiceCtrl.create)
+app.post('/api/service', ServiceCtrl.createServiceRecord)
 app.put('/api/service/:id', ServiceCtrl.update)
 app.delete('/api/service/:id', ServiceCtrl.delete)
 

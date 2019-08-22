@@ -5,7 +5,7 @@ class ServiceRecord extends Component {
   constructor(){
   super()
 
-// Creates the ILLUSION of a seond page
+// Creates the ILLUSION of a second page
 
     this.state = {
       edit: false
