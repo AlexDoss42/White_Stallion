@@ -36,13 +36,16 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    let { id } = req.params
-    let deletedServiceRecord = req.body
-    deletedServiceRecord.id = id
-
-    let index = serviceLog.findIndex(deletedServiceRecord => +deletedServiceRecord.id === +id)
-
-    serviceLog.splice(index, 1)
-    res.send(serviceLog)
+    const db = req.app.get('db')
+    let { service_id } = req.params
+   
+    db.service_records.deleteRecord([service_id])
+    .then(() =>{
+      res.sendStatus(200)
+    })
+    .catch(err => {
+      res.status(500).send('error in delete service record: ', err)
+    })
+   
   }
 }
