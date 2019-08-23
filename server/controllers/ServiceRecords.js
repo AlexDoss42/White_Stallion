@@ -24,15 +24,16 @@ module.exports = {
     },
     
   update: (req, res) => {
+    const db = req.app.get('db')
 
-    let { id } = req.params
-    let updatedServiceRecord = req.body
-    updatedServiceRecord.id = id
-
-    let index = serviceLog.findIndex(updatedServiceRecord => +updatedServiceRecord.id === +id)
-
-    serviceLog.splice(index, 1, updatedServiceRecord)
-    res.send(serviceLog)
+    let { vehicle_id } = req.params
+    let { price, milesDriven, partName, dateOfService } = req.body
+    
+    db.service_records.createRecord([ price, milesDriven, partName, dateOfService, vehicle_id ])
+    .then(res => {
+      res.status(200).send("Successfully updated service")
+    })
+    .catch(err => res.status(500).send('error in update record', err))
   },
 
   delete: (req, res) => {
