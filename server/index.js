@@ -31,6 +31,17 @@ massive(CONNECTION_STRING)
     console.log(err)
   })
 
+// Account Endpoints
+
+// Vehicle Endpoints
+
+app.get('/api/vehicle/:user_id', vehicleCtrl.getVehiclesById)
+app.post('/api/vehicle', vehicleCtrl.createVehicle)
+app.put('/api/vehicle/:vehicle_id', vehicleCtrl.update)
+app.delete('/api/vehcile/:vehicle_id', vehicleCtrl.deleteVehicle)
+
+// Service Endpoints
+
 app.get('/api/service/:vehicle_id', ServiceCtrl.getRecordsById)
 app.post('/api/service', ServiceCtrl.createServiceRecord)
 app.put('/api/service/:id', ServiceCtrl.update)
