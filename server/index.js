@@ -4,6 +4,7 @@ const massive = require('massive')
 const session = require('express-session')
 
 const ServiceCtrl = require('./controllers/ServiceRecords')
+const vehicleCtrl = require('./controllers/Vehicle')
 
 const app = express()
 
