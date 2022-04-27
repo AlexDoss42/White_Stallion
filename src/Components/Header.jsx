@@ -2,6 +2,38 @@ import React, { Component } from 'react';
 
 class Header extends Component {
 
+  // Allows you to push the home button while on the add page and return to home but does nothing on the home page
+
+  toggleHome = () => {
+    this.setState({
+      Homepage: true
+    })
+  }
+
+// Allows you to toggle to the add a service record page but does nothing on the add page
+
+  toggleAdd = () => {
+    this.setState({
+      Homepage: false
+    })
+  }
+
+  // Toggles the search bar off and on all pages
+
+  toggleSearch = () => {
+    this.setState({
+      ToggleSearchBar: !this.state.ToggleSearchBar
+    })
+  }
+
+// WORK IN PROGRESS!!! Grabs the searchbar input to filter service log
+
+  search = (searchInput) => {
+    console.log(searchInput)
+    this.setState({
+      searchValue: searchInput.target.value
+    })
+  }
 
   render() {
 
