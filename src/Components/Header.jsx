@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+function Header() {
 
   // Allows you to push the home button while on the add page and return to home but does nothing on the home page
 
-  toggleHome = () => {
+  const toggleHome = () => {
     this.setState({
       Homepage: true
     })
@@ -12,7 +12,7 @@ class Header extends Component {
 
 // Allows you to toggle to the add a service record page but does nothing on the add page
 
-  toggleAdd = () => {
+  const toggleAdd = () => {
     this.setState({
       Homepage: false
     })
@@ -20,7 +20,7 @@ class Header extends Component {
 
   // Toggles the search bar off and on all pages
 
-  toggleSearch = () => {
+  const toggleSearch = () => {
     this.setState({
       ToggleSearchBar: !this.state.ToggleSearchBar
     })
@@ -28,101 +28,61 @@ class Header extends Component {
 
 // WORK IN PROGRESS!!! Grabs the searchbar input to filter service log
 
-  search = (searchInput) => {
+  const search = (searchInput) => {
     console.log(searchInput)
     this.setState({
       searchValue: searchInput.target.value
     })
   }
 
-  render() {
-
     return (
-
-// Toggles the search bar, which doesn't work at the moment, when you click on the search icon 
-      
       (this.props.ToggleSearchBar === false) ?
-
-// Header with Search Bar hidden
-
       <div className='headerComponent'>
-
-{/* Home Button */}
-
         <div className='logo'>
-
           <i 
           className="fas fa-car-side fa-2x"
-          onClick= {() => {this.props.toggleHome()}}
+          onClick= {() => {toggleHome()}}
           ></i>
-
-        </div>
-        
+        </div>      
         <h1>El SEMENTAL BLANCO</h1>
-
         <div className='navIcons'>
-
-{/* Add Icon Button */}
-
           <i 
           className="fas fa-plus fa-2x"
-          onClick= {() => {this.props.toggleAdd()}}
+          onClick= {() => {toggleAdd()}}
           ></i>
-
-{/* Search Icon */}
-
           <i className="fas fa-search fa-2x"
-          onClick= {() => {this.props.toggleSearch()}}
+          onClick= {() => {toggleSearch()}}
           ></i>
-
         </div>
-
       </div>
-
       :
 
 // Header with Search bar showing
 
       <div className='headerComponent'>
-
         <div className='logo'>
-
           <i 
           className="fas fa-car-side fa-2x"
-          onClick= {() => {this.props.toggleHome()}}
+          onClick= {() => {toggleHome()}}
           ></i>
-
         </div>
-
         <h1>El SEMENTAL BLANCO</h1>
-
         <div className='navPlusSearchBar'>
-
           <div className='navIcons'>
-
             <i 
             className="fas fa-plus fa-2x"
-            onClick= {() => {this.props.toggleAdd()}}
+            onClick= {() => {toggleAdd()}}
             ></i>
-
             <i className="fas fa-search fa-2x"
-            onClick= {() => {this.props.toggleSearch()}}
+            onClick= {() => {toggleSearch()}}
             ></i>
-
           </div>
-
-{/* Search Box */}
-
           <input type="text" 
           className='searchInput'
-          onChange = { this.props.search }/>
-         
+          onChange = { search }/>    
         </div>
-
       </div>
-
-    )
-  } 
+    ) 
 }
 
 export default Header;
