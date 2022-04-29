@@ -3,6 +3,7 @@ import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 
 function AddServiceRecord() {
+
   return (
     <div className="App" id='AddServicePage'>
           
@@ -14,8 +15,7 @@ function AddServiceRecord() {
           // search = { this.search }
           />
           
-          <AddServiceRecord 
-          toggleHome = { this.toggleHome }/>
+          <AddServiceRecord />
           
           <Footer /> 
 
