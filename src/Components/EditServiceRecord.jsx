@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class EditServiceRecord extends Component {
-  constructor(props) {
-    super(props)
+function EditServiceRecord(props) {
 
     this.state = {
       id: props.serviceRecord.id,
@@ -11,16 +9,16 @@ class EditServiceRecord extends Component {
       partName: props.serviceRecord.partName,
       dateOfService: props.serviceRecord.dateOfService
     }
-  }
 
-  handleChange = (e) => {
+
+  const handleChange = (e) => {
     let {value, name } = e.target 
     this.setState({
       [name]: value
     })
   }
 
-  handleClick = () => {
+  const handleClick = () => {
 
 // Makes sure you have values for each edit before it will update
 
@@ -38,15 +36,12 @@ class EditServiceRecord extends Component {
 
 // Updates service record
 
-    let serviceRecord = {...this.props.serviceRecord, ...this.state}
+    let serviceRecord = {...props.serviceRecord, ...this.state}
 
     this.props.updateServiceRecord(serviceRecord)
     this.props.toggleEdit()
     }
   }
-
-  render () {
-
     return (
 
       <div className='editInputs'>
@@ -96,14 +91,13 @@ class EditServiceRecord extends Component {
 
           <i 
           className="far fa-window-close"
-          onClick={this.props.toggleEdit}
+          onClick={props.toggleEdit}
           ></i>
 
         </div>
         
       </div>
     )
-  }
 }
 
 export default EditServiceRecord;

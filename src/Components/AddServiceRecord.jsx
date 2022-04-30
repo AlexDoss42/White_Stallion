@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-class AddServiceRecord extends Component {
-  constructor(props) {
-    super(props)
+function AddServiceRecord() {
+  
 
     this.state = {
       price: '',
@@ -11,9 +10,8 @@ class AddServiceRecord extends Component {
       partName: '',
       dateOfService: '',
     }
-  }
 
-  addServiceRecord = (newServiceRecord) => {
+  const addServiceRecord = (newServiceRecord) => {
     axios.post('/api/service', newServiceRecord).then(res => {
       this.setState({
         ServiceLog: res.data
@@ -21,14 +19,14 @@ class AddServiceRecord extends Component {
     }).catch(err => console.log('Houston, we have a problem: ', err))
   }
 
-  handleChange = (e) => {
+  const handleChange = (e) => {
     let { value, name } = e.target 
     this.setState({
       [name]: value
     })
   }
 
-  handleClick = () => {
+  const handleClick = () => {
 
 // Makes sure each input is filled out before submitting
 
@@ -52,8 +50,6 @@ class AddServiceRecord extends Component {
       this.props.toggleHome()
     }
   }
-
-  render(){
 
     return (
       <div className='addInputs'>
@@ -106,7 +102,6 @@ class AddServiceRecord extends Component {
 
       </div>
     )
-  }
 }
 
 export default AddServiceRecord; 
