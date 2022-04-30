@@ -1,42 +1,37 @@
-require('dotenv').config()
-const express = require('express')
-const massive = require('massive')
-const session = require('express-session')
+const express = require('express');
+const app = express();
+const pool = require("./db");
+require('dotenv').config();
 
-const ServiceCtrl = require('./controllers/ServiceRecords')
-const vehicleCtrl = require('./controllers/Vehicle')
-
-const app = express()
-
-const { SESSION_SECRET, CONNECTION_STRING, SERVER_PORT } = process.env
+const { SERVER_PORT } = process.env
 
 app.use(express.json())
-
-app.use(session({
-  secret: SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 365
-  }
-}))
-
-massive(CONNECTION_STRING)
-  .then((db) => {
-    app.set('db', db)
-    console.log(`It's working! IT'S WORKING!!!`)
-    console.log(db.listTables())
-  })
-  .catch(err => {
-    console.log('error in database')
-    console.log(err)
-  })
 
 // Account Endpoints
 
 // Vehicle Endpoints
 
-app.get('/api/vehicle/:user_id', vehicleCtrl.getVehiclesById)
+app.get('/api/vehicle/:user_id', (req, res) => {
+  const db = req.app.get('db')
+  const { vehicle_id } = req.params
+  
+  try {
+    const serviceRecords = pool.query(`SELECT * from service_records where vehicle_id = $1`);
+    res.json(serviceRecords);
+  } catch (error) {
+    console.error(error.message);
+  }
+
+  db.service_records.getAllRecordsByVehicle([vehicle_id])
+  .then(data => {
+    res.status(200).send(data)
+  })
+  .catch(err => {
+    console.log('error in get records by vehicle_id')
+    console.log(err)
+  })
+});
+
 app.post('/api/vehicle', vehicleCtrl.createVehicle)
 app.put('/api/vehicle/:vehicle_id', vehicleCtrl.update)
 app.delete('/api/vehcile/:vehicle_id', vehicleCtrl.deleteVehicle)
