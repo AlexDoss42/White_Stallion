@@ -26,14 +26,35 @@ app.post('/api/vehicle', (req, res) => {
   const { make, model, year, miles, user_id } = req.body;
   
   try {
-    const newVehicle = pool.query(`insert into vehicle (make, model, year, miles, owner) values ($1, $2, $3, $4, $5)`, [make, model, year, miles, user_id]);
+    const newVehicle = pool.query(`INSERT into vehicle (make, model, year, miles, owner) values ($1, $2, $3, $4, $5)`, [make, model, year, miles, user_id]);
     res.json(newVehicle[0]);
   } catch (error) {
     console.error(error.message);
   }
+});
+
+app.put('/api/vehicle/:vehicle_id', (req, res) => {
+  const { make, model, year, miles, user_id } = req.body;
+  const { vehicle_id } = req.params
+  
+  try {
+    const updatedVehicle = pool.query(`UPDATE vehicle SET make = $1, model = $2, year = $3, miles = $4, owner = $5 WHERE vehicle_id = $6`, [make, model, year, miles, user_id, vehicle_id]);
+    res.json(updatedVehicle[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.delete('/api/vehcile/:vehicle_id', (req, res) => {
+  const { vehicle_id } = req.params
+  
+  try {
+    const deletedVehicle = pool.query(`DELETE FROM vehicle WHERE vehicle_id = $1`, [vehicle_id]);
+    res.status(200);
+  } catch (error) {
+    console.error(error.message);
+  }
 })
-app.put('/api/vehicle/:vehicle_id', vehicleCtrl.update)
-app.delete('/api/vehcile/:vehicle_id', vehicleCtrl.deleteVehicle)
 
 // Service Endpoints
 
