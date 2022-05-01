@@ -12,27 +12,26 @@ app.use(express.json())
 // Vehicle Endpoints
 
 app.get('/api/vehicle/:user_id', (req, res) => {
-  const db = req.app.get('db')
-  const { vehicle_id } = req.params
+  const { user_id } = req.params
   
   try {
-    const serviceRecords = pool.query(`SELECT * from service_records where vehicle_id = $1`);
+    const serviceRecords = pool.query(`SELECT * from vehicle where vehicle_id = $1`, [user_id]);
     res.json(serviceRecords);
   } catch (error) {
     console.error(error.message);
   }
-
-  db.service_records.getAllRecordsByVehicle([vehicle_id])
-  .then(data => {
-    res.status(200).send(data)
-  })
-  .catch(err => {
-    console.log('error in get records by vehicle_id')
-    console.log(err)
-  })
 });
 
-app.post('/api/vehicle', vehicleCtrl.createVehicle)
+app.post('/api/vehicle', (req, res) => {
+  const { make, model, year, miles, user_id } = req.body;
+  
+  try {
+    const newVehicle = pool.query(`insert into vehicle (make, model, year, miles, owner) values ($1, $2, $3, $4, $5)`, [make, model, year, miles, user_id]);
+    res.json(newVehicle[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+})
 app.put('/api/vehicle/:vehicle_id', vehicleCtrl.update)
 app.delete('/api/vehcile/:vehicle_id', vehicleCtrl.deleteVehicle)
 
