@@ -103,4 +103,4 @@ app.delete('/api/service/:service_id', (req, res) => {
   }
 });
 
-app.listen(SERVER_PORT, () => console.log(`It's over Anakin! I have the ${SERVER_PORT} port`))
+app.listen(4242, () => console.log(`It's over Anakin! I have the 4242 port`))
