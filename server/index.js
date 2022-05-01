@@ -49,18 +49,58 @@ app.delete('/api/vehcile/:vehicle_id', (req, res) => {
   const { vehicle_id } = req.params
   
   try {
-    const deletedVehicle = pool.query(`DELETE FROM vehicle WHERE vehicle_id = $1`, [vehicle_id]);
+    pool.query(`DELETE FROM vehicle WHERE vehicle_id = $1`, [vehicle_id]);
     res.status(200);
   } catch (error) {
     console.error(error.message);
   }
-})
+});
 
 // Service Endpoints
 
-app.get('/api/service/:vehicle_id', ServiceCtrl.getRecordsById)
-app.post('/api/service', ServiceCtrl.createServiceRecord)
-app.put('/api/service/:id', ServiceCtrl.update)
-app.delete('/api/service/:id', ServiceCtrl.delete)
+app.get('/api/service/:vehicle_id', (req, res) => {
+  const { vehicle_id } = req.params
+  
+  try {
+    const serviceRecord = pool.query(`SELECT * FROM service_records WHERE vehicle_id = $1`, [vehicle_id]);
+    res.json(serviceRecord[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.post('/api/service', (req, res) => {
+  const { price, miles_driven, part_name, date_of_service, vehicle_id } = req.body;
+  
+  try {
+    const newService = pool.query(`insert into service_records (price, miles_driven, part_name, date_of_service, vehicle_id) values ($1, $2, $3, $4, $5)`, [price, miles_driven, part_name, date_of_service, vehicle_id]);
+    res.json(newService[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.put('/api/service/:service_id', (req, res) => {
+  const { price, miles_driven, part_name, date_of_service, vehicle_id } = req.body;
+  const { service_id } = req.params
+  
+  try {
+    const updatedVehicle = pool.query(`UPDATE service_records SET make = $1, model = $2, year = $3, miles = $4, owner = $5 WHERE vehicle_id = $6`, [price, miles_driven, part_name, date_of_service, vehicle_id, service_id]);
+    res.json(updatedVehicle[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.delete('/api/service/:service_id', (req, res) => {
+  const { service_id } = req.params
+  
+  try {
+    pool.query(`DELETE FROM service_records WHERE service_id = $1`, [service_id]);
+    res.status(200);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 app.listen(SERVER_PORT, () => console.log(`It's over Anakin! I have the ${SERVER_PORT} port`))
