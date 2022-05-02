@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EditServiceRecord from './EditServiceRecord'
 
-function ServiceRecord() {
+function ServiceRecord({ serviceRecord, updateServiceRecord, deleteServiceRecord }) {
+
+  const [showEdit, setShowEdit] = useState(false);
 
   const toggleEdit = () => {
-    this.setState({
-      edit: !this.state.edit
-    })
+    setShowEdit(!showEdit);
   }
-    
-    let { serviceRecord } = this.props
     
     return (
 // Terinary to determine which "page" to render   
-      this.state.edit ?     
+      showEdit ?     
 // Edit Page
       <EditServiceRecord 
       serviceRecord = { serviceRecord } 
-      updateServiceRecord = { this.props.updateServiceRecord } 
+      updateServiceRecord = { updateServiceRecord } 
       toggleEdit = {toggleEdit} /> 
       :
 // Normal Service record to be rendered in the service log
@@ -32,12 +30,12 @@ function ServiceRecord() {
  {/* Edit Button */}
           <i 
           className="far fa-edit"
-          onClick={this.toggleEdit}
+          onClick={toggleEdit}
           ></i>
 {/* Delete Button */}
           <i 
           className="far fa-trash-alt"
-          onClick={() => {this.props.deleteServiceRecord(serviceRecord)}}
+          onClick={() => {deleteServiceRecord(serviceRecord)}}
           ></i>
         </div>
       </div>
