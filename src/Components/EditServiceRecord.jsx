@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function EditServiceRecord(props) {
 
-    this.state = {
+  const [formData, setFormData] = useState({
       id: props.serviceRecord.id,
       price: props.serviceRecord.price,
       milesDriven: props.serviceRecord.milesDriven,
       partName: props.serviceRecord.partName,
       dateOfService: props.serviceRecord.dateOfService
-    }
+    });
 
 
   const handleChange = (e) => {
     let {value, name } = e.target 
-    this.setState({
+    setFormData({
+      ...formData,
       [name]: value
     })
   }
@@ -22,7 +23,7 @@ function EditServiceRecord(props) {
 
 // Makes sure you have values for each edit before it will update
 
-    let { price, milesDriven, partName, dateOfService } = this.state
+    let { price, milesDriven, partName, dateOfService } = formData;
 
     if(price === '') {
       alert('Price is required')
@@ -36,66 +37,50 @@ function EditServiceRecord(props) {
 
 // Updates service record
 
-    let serviceRecord = {...props.serviceRecord, ...this.state}
-
-    this.props.updateServiceRecord(serviceRecord)
-    this.props.toggleEdit()
+    let edittedServiceRecord = {...props.serviceRecord, ...this.state}
+    props.updateServiceRecord(edittedServiceRecord);
     }
   }
     return (
-
       <div className='editInputs'>
-
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'price'
         type = 'number'
-        value = {this.state.price}
+        value = {formData.price}
         placeholder = 'price'
         />
-
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'milesDriven'
         type = 'number'
-        value = {this.state.milesDriven}
+        value = {formData.milesDriven}
         placeholder = 'Odometer Reading'
         />
-
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'partName'
         type = 'text'
-        value = {this.state.partName}
+        value = {formData.partName}
         placeholder = 'Part Name'
         />
-
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'dateOfService'
         type = 'date'
-        value = {this.state.dateOfService}
+        value = {formData.dateOfService}
         placeholder = 'mm/dd/yy'
         />
-
         <div className='editBtns'>
-
-{/* Save Button */}
-
-          <i 
-          className="far fa-save"
-          onClick={this.handleClick}
-          ></i>
-
-{/* Cancel Button */}
-
-          <i 
-          className="far fa-window-close"
-          onClick={props.toggleEdit}
-          ></i>
-
+            <i 
+            className="far fa-save"
+            onClick={handleClick}
+            />
+            <i 
+            className="far fa-window-close"
+            onClick={props.toggleEdit}
+            />
         </div>
-        
       </div>
     )
 }
