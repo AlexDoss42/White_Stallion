@@ -11,8 +11,8 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<Home />}/>
           <Route path="/add-service" element={<AddServiceRecord />}/>
+          <Route path="/" element={<Home />}/>
         </Routes>
     </Router>
   )
