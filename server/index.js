@@ -1,9 +1,6 @@
 const express = require('express');
 const app = express();
 const pool = require("./db");
-require('dotenv').config();
-
-const { SERVER_PORT } = process.env
 
 app.use(express.json())
 
@@ -103,4 +100,4 @@ app.delete('/api/service/:service_id', (req, res) => {
   }
 });
 
-app.listen(4242, () => console.log(`It's over Anakin! I have the 4242 port`))
+app.listen(4242, () => console.log(`It's over Anakin! I have the 4242 port`));

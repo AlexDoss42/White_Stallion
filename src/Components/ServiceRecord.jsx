@@ -44,4 +44,4 @@ function ServiceRecord() {
     )
 }
 
-export default ServiceRecord
+export default ServiceRecord;
