@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 function AddServiceRecord() {
   
-
-    this.state = {
+  const [formData, setFormData] = useState({
       price: '',
       milesDriven: '',
       partName: '',
       dateOfService: '',
-    }
+  });
 
   const addServiceRecord = (newServiceRecord) => {
     axios.post('/api/service', newServiceRecord).then(res => {
-      this.setState({
-        ServiceLog: res.data
-      })
+      setFormData({
+        price: '',
+        milesDriven: '',
+        partName: '',
+        dateOfService: '',
+    });
     }).catch(err => console.log('Houston, we have a problem: ', err))
   }
 
   const handleChange = (e) => {
     let { value, name } = e.target 
-    this.setState({
+    setFormData({
+      ...formData,
       [name]: value
     })
   }
@@ -30,7 +34,7 @@ function AddServiceRecord() {
 
 // Makes sure each input is filled out before submitting
 
-    let { price, milesDriven, partName, dateOfService } = this.state
+    let { price, milesDriven, partName, dateOfService } = formData;
     
     if(price === '') {
       alert('Price is required')
@@ -44,39 +48,35 @@ function AddServiceRecord() {
 
 // Adds a new service record to the service log
       
-      let serviceRecord = {...this.props.serviceRecord, ...this.state}
-      
-      this.addServiceRecord(serviceRecord)
-      this.props.toggleHome()
+      addServiceRecord(formData);
     }
   }
 
     return (
       <div className='addInputs'>
-        
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'price'
         type = 'number'
         placeholder = 'price'
         />
 
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'milesDriven'
         type = 'number'
         placeholder = 'Odometer'
         />
 
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'partName'
         type = 'text'
         placeholder = 'Part Name'
         />
 
         <input
-        onChange = {this.handleChange}
+        onChange = {handleChange}
         name = 'dateOfService'
         type = 'date'
         placeholder = 'mm/dd/yyyy'
@@ -88,15 +88,15 @@ function AddServiceRecord() {
 
           <i 
           className="fas fa-plus"
-          onClick={this.handleClick}
+          onClick={handleClick}
           ></i>
         
 {/* Cancel Button */}
 
-          <i 
-          className="far fa-window-close"
-          onClick={this.props.toggleHome}
-          ></i>
+        <Link to="/">
+          <i className="far fa-window-close" />
+        </Link>
+          
 
         </div>
 
