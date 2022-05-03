@@ -9,6 +9,7 @@ function AddServiceRecord() {
       miles_driven: '',
       part_name: '',
       date_of_service: '',
+      vehicle_id: 1
   });
 
   const addServiceRecord = (newServiceRecord) => {
@@ -18,6 +19,7 @@ function AddServiceRecord() {
         miles_driven: '',
         part_name: '',
         date_of_service: '',
+        vehicle_id: 1
     });
     }).catch(err => console.log('Houston, we have a problem: ', err))
   }
@@ -63,7 +65,7 @@ function AddServiceRecord() {
         />
 
         <input
-        onChange = {(e) => setFormData({ ...formData, partName: e.target.value })}
+        onChange = {(e) => setFormData({ ...formData, part_name: e.target.value })}
         name = 'part_name'
         type = 'text'
         placeholder = 'Part Name'
@@ -71,7 +73,7 @@ function AddServiceRecord() {
         />
 
         <input
-        onChange = {(e) => setFormData({ ...formData, dateOfService: e.target.value })}
+        onChange = {(e) => setFormData({ ...formData, date_of_service: e.target.value })}
         name = 'date_of_service'
         type = 'date'
         placeholder = 'mm/dd/yyyy'
