@@ -33,6 +33,6 @@ create table service_records (
     price int,
     miles_driven int,
     part_name VARCHAR(50),
-    -- date_of_service date,
+    date_of_service date,
     vehicle_id int references vehicle(vehicle_id)
 )

@@ -6,13 +6,14 @@ import ServiceRecord from './ServiceRecord'
 
 function ServiceLog() {
 
-  const [serviceLog, setServiceLog] = useState([])
+  const [serviceLogs, setServiceLogs] = useState([])
 
 // Displays the complete Service log upon Mounting
 
 useEffect(() => {
   axios.get('/api/service/1').then(res => {
-    setServiceLog(res.data);
+    console.log(123, res);
+    setServiceLogs(res.data);
   })
   .catch(err => console.log('Houston we have a problem: ', err))
 }, [])
@@ -21,7 +22,7 @@ useEffect(() => {
 
   const updateServiceRecord = (serviceRecord) => {
     axios.put(`/api/service/${serviceRecord.id}`, serviceRecord).then(res => {
-      setServiceLog(res.data);
+      setServiceLogs(res.data);
     })
     .catch(err => console.log('Houston, we have a problem: ', err))
   }
@@ -32,7 +33,7 @@ useEffect(() => {
     console.log(serviceRecord)
     axios.delete(`/api/service/${serviceRecord.id}`, serviceRecord)
     .then(res => { 
-      setServiceLog(res.data);
+      setServiceLogs(res.data);
     })
     .catch(err => console.log('Houston, we have a problem: ', err))
   }
@@ -40,7 +41,7 @@ useEffect(() => {
     return (
 
       <div className='ServiceLog'>
-      {serviceLog.map(serviceRecord => {
+      {serviceLogs.map(serviceRecord => {
           return <ServiceRecord
                   key = { serviceRecord.id }
                   serviceRecord = { serviceRecord }
