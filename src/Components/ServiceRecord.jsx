@@ -22,9 +22,9 @@ function ServiceRecord({ serviceRecord, updateServiceRecord, deleteServiceRecord
       <div className='ServiceRecord'>
         <div className='serviceRecordData'>
           <p>Price: { serviceRecord.price }</p>
-          <p>Miles Driven: { serviceRecord.milesDriven }</p>
-          <p>Part Name: { serviceRecord.partName }</p>
-          <p>Date of Service: { serviceRecord.dateOfService }</p>
+          <p>Miles Driven: { serviceRecord.miles_driven }</p>
+          <p>Part Name: { serviceRecord.part_name }</p>
+          <p>Date of Service: { serviceRecord.date_of_service }</p>
         </div>
         <div className='serviceRecordButtons'>
  {/* Edit Button */}
