@@ -1,87 +1,71 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-function EditServiceRecord(props) {
-
+function EditServiceRecord({ serviceRecord, updateServiceRecord }) {
+  const { id, price, miles_driven, part_name, date_of_service} = serviceRecord;
+  
   const [formData, setFormData] = useState({
-      id: props.serviceRecord.id,
-      price: props.serviceRecord.price,
-      milesDriven: props.serviceRecord.milesDriven,
-      partName: props.serviceRecord.partName,
-      dateOfService: props.serviceRecord.dateOfService
+      id: id,
+      price: price,
+      milesDriven: miles_driven,
+      partName: part_name,
+      dateOfService: date_of_service
     });
 
-
-  const handleChange = (e) => {
-    let {value, name } = e.target 
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
-
   const handleClick = () => {
-
 // Makes sure you have values for each edit before it will update
-
-    let { price, milesDriven, partName, dateOfService } = formData;
-
+    let { price, miles_driven, part_name, date_of_service } = formData;
     if(price === '') {
       alert('Price is required')
-    } else if(milesDriven === '') {
+    } else if(miles_driven === '') {
       alert('Odometer Reading is required')
-    } else if(partName === '') {
+    } else if(part_name === '') {
       alert('Part Name is required')
-    } else if(dateOfService === '') {
+    } else if(date_of_service === '') {
       alert('Service Date is required')
     } else {
-
 // Updates service record
-
-    let edittedServiceRecord = {...props.serviceRecord, ...this.state}
-    props.updateServiceRecord(edittedServiceRecord);
+    let edittedServiceRecord = {...serviceRecord, ...formData}
+    updateServiceRecord(edittedServiceRecord);
     }
   }
     return (
-      <div className='editInputs'>
+      <form className='editInputs'>
         <input
-        onChange = {handleChange}
+        onChange={(e) => setFormData({ ...formData, price: e.target.value })}
         name = 'price'
         type = 'number'
-        value = {formData.price}
         placeholder = 'price'
+        value={formData.price}
         />
         <input
-        onChange = {handleChange}
-        name = 'milesDriven'
+        onChange = {(e) => setFormData({ ...formData, miles_driven: e.target.value })}
+        name = 'miles_driven'
         type = 'number'
-        value = {formData.milesDriven}
-        placeholder = 'Odometer Reading'
+        placeholder = 'Odometer'
+        value={formData.miles_driven}
         />
         <input
-        onChange = {handleChange}
-        name = 'partName'
+        onChange = {(e) => setFormData({ ...formData, partName: e.target.value })}
+        name = 'part_name'
         type = 'text'
-        value = {formData.partName}
         placeholder = 'Part Name'
+        value={formData.part_name}
         />
         <input
-        onChange = {handleChange}
-        name = 'dateOfService'
+        onChange = {(e) => setFormData({ ...formData, dateOfService: e.target.value })}
+        name = 'date_of_service'
         type = 'date'
-        value = {formData.dateOfService}
-        placeholder = 'mm/dd/yy'
+        placeholder = 'mm/dd/yyyy'
+        value={formData.date_of_service}
         />
         <div className='editBtns'>
-            <i 
-            className="far fa-save"
-            onClick={handleClick}
-            />
-            <i 
-            className="far fa-window-close"
-            onClick={props.toggleEdit}
-            />
+          <i className="fas fa-plus" onClick={handleClick} />
+        <Link to="/">
+          <i className="far fa-window-close" />
+        </Link>
         </div>
-      </div>
+      </form>
     )
 }
 

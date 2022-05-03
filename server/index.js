@@ -58,11 +58,8 @@ app.delete('/api/vehcile/:vehicle_id', (req, res) => {
 
 app.get('/api/service/:vehicle_id', async (req, res) => {
   const { vehicle_id } = req.params
-  console.log(111, vehicle_id);
   try {
     const serviceRecord = await pool.query(`SELECT * FROM service_records WHERE vehicle_id = $1`, [vehicle_id]);
-    console.log(222, serviceRecord.rows);
-    
     res.json(serviceRecord.rows);
   } catch (error) {
     console.error(error.message);

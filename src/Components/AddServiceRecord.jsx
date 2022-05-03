@@ -6,43 +6,35 @@ function AddServiceRecord() {
   
   const [formData, setFormData] = useState({
       price: '',
-      milesDriven: '',
-      partName: '',
-      dateOfService: '',
+      miles_driven: '',
+      part_name: '',
+      date_of_service: '',
   });
 
   const addServiceRecord = (newServiceRecord) => {
     axios.post('/api/service', newServiceRecord).then(res => {
       setFormData({
         price: '',
-        milesDriven: '',
-        partName: '',
-        dateOfService: '',
+        miles_driven: '',
+        part_name: '',
+        date_of_service: '',
     });
     }).catch(err => console.log('Houston, we have a problem: ', err))
-  }
-
-  const handleChange = (e) => {
-    let { value, name } = e.target 
-    setFormData({
-      ...formData,
-      [name]: value
-    })
   }
 
   const handleClick = () => {
 
 // Makes sure each input is filled out before submitting
 
-    let { price, milesDriven, partName, dateOfService } = formData;
+    let { price, miles_driven, part_name, date_of_service } = formData;
     
     if(price === '') {
       alert('Price is required')
-    } else if(milesDriven === '') {
+    } else if(miles_driven === '') {
       alert('Odometer Reading is required')
-    } else if(partName === '') {
+    } else if(part_name === '') {
       alert('Part Name is required')
-    } else if(dateOfService === '') {
+    } else if(date_of_service === '') {
       alert('Service Date is required')
     } else {
 
@@ -53,33 +45,37 @@ function AddServiceRecord() {
   }
 
     return (
-      <div className='addInputs'>
+      <form className='addInputs'>
         <input
-        onChange = {handleChange}
+        onChange={(e) => setFormData({ ...formData, price: e.target.value })}
         name = 'price'
         type = 'number'
         placeholder = 'price'
+        value={formData.price}
         />
 
         <input
-        onChange = {handleChange}
-        name = 'milesDriven'
+        onChange = {(e) => setFormData({ ...formData, miles_driven: e.target.value })}
+        name = 'miles_driven'
         type = 'number'
         placeholder = 'Odometer'
+        value={formData.miles_driven}
         />
 
         <input
-        onChange = {handleChange}
-        name = 'partName'
+        onChange = {(e) => setFormData({ ...formData, partName: e.target.value })}
+        name = 'part_name'
         type = 'text'
         placeholder = 'Part Name'
+        value={formData.part_name}
         />
 
         <input
-        onChange = {handleChange}
-        name = 'dateOfService'
+        onChange = {(e) => setFormData({ ...formData, dateOfService: e.target.value })}
+        name = 'date_of_service'
         type = 'date'
         placeholder = 'mm/dd/yyyy'
+        value={formData.date_of_service}
         />
 
         <div className='editBtns'>
@@ -100,7 +96,7 @@ function AddServiceRecord() {
 
         </div>
 
-      </div>
+      </form>
     )
 }
 
