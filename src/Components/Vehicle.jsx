@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Vehicle({ vehicleRecord }) {
 
+  const link = `/vehicle_details/${vehicleRecord.vehicle_id}`
   return (
     <div className='vehicleRecord'>
         <div className='vehicleRecord'>
@@ -10,6 +12,7 @@ function Vehicle({ vehicleRecord }) {
             <p>Year: { vehicleRecord.year }</p>
             <p>Miles: { vehicleRecord.miles }</p>
         </div>
+        <Link to={link}>Details</Link>
     </div>
   )
 }
