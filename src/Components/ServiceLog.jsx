@@ -12,7 +12,6 @@ function ServiceLog() {
 
 useEffect(() => {
   axios.get('/api/service/1').then(res => {
-    console.log(123, res.data);
     setServiceLogs(res.data);
   })
   .catch(err => console.log('Houston we have a problem: ', err))
@@ -42,7 +41,6 @@ useEffect(() => {
 
       <div className='ServiceLog'>
       {serviceLogs.map(serviceRecord => {
-        console.log(456, serviceRecord)
           return <ServiceRecord
                   key = { serviceRecord.id }
                   serviceRecord = { serviceRecord }
