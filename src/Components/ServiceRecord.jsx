@@ -27,16 +27,8 @@ function ServiceRecord({ serviceRecord, updateServiceRecord, deleteServiceRecord
           <p>Date of Service: { serviceRecord.date_of_service }</p>
         </div>
         <div className='serviceRecordButtons'>
- {/* Edit Button */}
-          <i 
-          className="far fa-edit"
-          onClick={toggleEdit}
-          ></i>
-{/* Delete Button */}
-          <i 
-          className="far fa-trash-alt"
-          onClick={() => {deleteServiceRecord(serviceRecord)}}
-          ></i>
+          <i className="far fa-edit" onClick={toggleEdit} />
+          <i className="far fa-trash-alt" onClick={() => {deleteServiceRecord(serviceRecord)}} />
         </div>
       </div>
     )
