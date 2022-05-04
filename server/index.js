@@ -8,13 +8,12 @@ app.use(express.json())
 
 // Vehicle Endpoints
 
-app.get('/api/vehicle/:user_id', (req, res) => {
+app.get('/api/vehicle/:user_id', async (req, res) => {
   const { user_id } = req.params
   
   try {
-    const serviceRecords = pool.query(`SELECT * from vehicle where vehicle_id = $1`, [user_id]);
-    
-    res.json(serviceRecords);
+    const serviceRecords = await pool.query(`SELECT * from vehicle where owner = $1`, [user_id]);
+    res.json(serviceRecords.rows);
   } catch (error) {
     console.error(error.message);
   }
