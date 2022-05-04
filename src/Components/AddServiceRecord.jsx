@@ -22,12 +22,9 @@ function AddServiceRecord() {
         vehicle_id: 1
     });
     }).catch(err => console.log('Houston, we have a problem: ', err))
-  }
+  };
 
   const handleClick = () => {
-
-// Makes sure each input is filled out before submitting
-
     let { price, miles_driven, part_name, date_of_service } = formData;
     
     if(price === '') {
@@ -39,12 +36,9 @@ function AddServiceRecord() {
     } else if(date_of_service === '') {
       alert('Service Date is required')
     } else {
-
-// Adds a new service record to the service log
-      
       addServiceRecord(formData);
     }
-  }
+  };
 
     return (
       <form className='addInputs'>
@@ -55,7 +49,6 @@ function AddServiceRecord() {
         placeholder = 'price'
         value={formData.price}
         />
-
         <input
         onChange = {(e) => setFormData({ ...formData, miles_driven: e.target.value })}
         name = 'miles_driven'
@@ -63,7 +56,6 @@ function AddServiceRecord() {
         placeholder = 'Odometer'
         value={formData.miles_driven}
         />
-
         <input
         onChange = {(e) => setFormData({ ...formData, part_name: e.target.value })}
         name = 'part_name'
@@ -71,7 +63,6 @@ function AddServiceRecord() {
         placeholder = 'Part Name'
         value={formData.part_name}
         />
-
         <input
         onChange = {(e) => setFormData({ ...formData, date_of_service: e.target.value })}
         name = 'date_of_service'
@@ -79,25 +70,12 @@ function AddServiceRecord() {
         placeholder = 'mm/dd/yyyy'
         value={formData.date_of_service}
         />
-
         <div className='editBtns'>
-
-{/* Add Button */}
-
-          <i 
-          className="fas fa-plus"
-          onClick={handleClick}
-          ></i>
-        
-{/* Cancel Button */}
-
-        <Link to="/">
-          <i className="far fa-window-close" />
-        </Link>
-          
-
+          <i className="fas fa-plus" onClick={handleClick} />
+          <Link to="/">
+            <i className="far fa-window-close" />
+          </Link>
         </div>
-
       </form>
     )
 }
