@@ -6,7 +6,7 @@ import ServiceLog from '../Components/ServiceLog';
 function Home() {
 
   return (
-    <div className="App" id='AddServicePage'>   
+    <div id='AddServicePage'>   
         <Header />
         <ServiceLog />
         <Footer /> 
