@@ -14,13 +14,13 @@ function AddVehicle() {
     const addVehicle = (newVehicle) => {
         axios.post('/api/vehicle', newVehicle).then(res => {
             setVehicleData({
-            make: '',
-            model: '',
-            year: '',
-            miles: 0,
-            user_id: 1
-        });
-        window.location = "/garage";
+                make: '',
+                model: '',
+                year: '',
+                miles: 0,
+                user_id: 1
+            });
+            window.location = "/garage";
         }).catch(err => console.log('Houston, we have a problem: ', err))
     };
 
@@ -67,6 +67,7 @@ function AddVehicle() {
         onChange = {(e) => setVehicleData({ ...vehicleData, date_of_service: e.target.value })}
         name = 'miles'
         type = 'number'
+        placeholder='Miles'
         value={vehicleData.date_of_service}
         />
         <div className='editBtns'>

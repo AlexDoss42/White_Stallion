@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import AddVehicle from '../Components/AddVehicle';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import Vehicle from '../Components/Vehicle';
@@ -23,6 +24,7 @@ function Garage() {
                     vehicleRecord={vehicle}
                 />
         })} 
+        <AddVehicle />
         <Footer /> 
     </div>
   )
