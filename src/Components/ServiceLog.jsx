@@ -4,14 +4,14 @@ import axios from 'axios'
 import ServiceRecord from './ServiceRecord'
 
 
-function ServiceLog() {
+function ServiceLog({ vehicle_id }) {
 
   const [serviceLogs, setServiceLogs] = useState([])
 
 // Displays the complete Service log upon Mounting
 
 useEffect(() => {
-  axios.get('/api/service/1').then(res => {
+  axios.get(`/api/service/${vehicle_id}`).then(res => {
     setServiceLogs(res.data);
   })
   .catch(err => console.log('Houston we have a problem: ', err))

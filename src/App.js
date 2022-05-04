@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 
 import './App.css';
 import Garage from './Pages/Garage';
+import VehicleDetails from './Pages/VehicleDetails';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/add-service" element={<AddServiceRecord />}/>
           <Route path="/garage" element={<Garage />} />
+          <Route path="/vehicle_details/:vehicle_id" element={<VehicleDetails />} />
           <Route path="/" element={<Home />}/>
         </Routes>
     </Router>
