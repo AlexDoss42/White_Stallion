@@ -1,8 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
+
 import Footer from '../Components/Footer'
 import Header from '../Components/Header'
 import ServiceLog from '../Components/ServiceLog';
+import Vehicle from '../Components/Vehicle';
 
 function VehicleDetails() {
     const { vehicle_id } = useParams();
@@ -10,6 +12,7 @@ function VehicleDetails() {
   return (
     <div>
         <Header />
+        <Vehicle />
         <ServiceLog vehicle_id={vehicle_id} />
         <Footer /> 
     </div>

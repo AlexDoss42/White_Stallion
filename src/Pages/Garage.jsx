@@ -8,7 +8,7 @@ function Garage() {
   return (
     <div>
         <Header />
-        HOME
+          Garage
         <Footer /> 
     </div>
   )
