@@ -6,4 +6,4 @@ function GasFillRecord() {
   )
 }
 
-export default GasFillRecord
+export default GasFillRecord;

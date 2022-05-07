@@ -6,4 +6,4 @@ function GasLog() {
   )
 }
 
-export default GasLog
+export default GasLog;
