@@ -1,13 +1,14 @@
 import React from 'react'
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
+import VehicleList from '../Components/VehicleList';
 
 function Home() {
 
   return (
     <div id='AddServicePage'>   
         <Header />
-        <h1>THE HOME PAGE</h1>
+        <VehicleList />
         <Footer /> 
     </div>
   )

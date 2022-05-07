@@ -15,10 +15,12 @@ function VehicleList() {
   return (
     <div>
         {vehicles.map(vehicle => {
-          return <Vehicle
-                    key={vehicle.vehicle_id}
-                    vehicleRecord={vehicle}
-                />
+          return (
+            <Vehicle
+                key={vehicle.vehicle_id}
+                vehicleRecord={vehicle}
+            />
+          )
         })} 
         <AddVehicle />
     </div>
