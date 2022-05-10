@@ -96,4 +96,51 @@ app.delete('/api/service/:service_id', (req, res) => {
   }
 });
 
+
+// Service Endpoints
+
+app.get('/api/service/:vehicle_id', async (req, res) => {
+  const { vehicle_id } = req.params
+  try {
+    const fillupRecords = await pool.query(`SELECT * FROM gas_full_ups WHERE vehicle_id = $1`, [vehicle_id]);
+    res.json(fillupRecords.rows);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.post('/api/service', (req, res) => {
+  const { price, miles_driven, part_name, date_of_service, vehicle_id } = req.body;
+  
+  try {
+    const newService = pool.query(`INSERT INTO gas_full_ups (price, miles_driven, part_name, date_of_service, vehicle_id) values ($1, $2, $3, $4, $5)`, [price, miles_driven, part_name, date_of_service, vehicle_id]);
+    res.json(newService[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.put('/api/service/:fill_up_id', (req, res) => {
+  const { price, miles_driven, type, date_of_service, vehicle_id } = req.body;
+  const { fill_up_id } = req.params
+  
+  try {
+    const updatedFillUp = pool.query(`UPDATE gas_full_ups SET price = $1, miles_driven = $2, type = $3, date_of_service = $4, vehicle_id = $5 WHERE fill_up_id = $6`, [price, miles_driven, type, date_of_service, vehicle_id, fill_up_id]);
+    res.json(updatedFillUp[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.delete('/api/service/:fill_up_id', (req, res) => {
+  const { fill_up_id } = req.params
+  
+  try {
+    pool.query(`DELETE FROM gas_full_ups WHERE fill_up_id = $1`, [fill_up_id]);
+    res.status(200);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
 app.listen(4242, () => console.log(`It's over Anakin! I have the 4242 port`));

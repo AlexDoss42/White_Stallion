@@ -35,4 +35,13 @@ create table service_records (
     part_name VARCHAR(50),
     date_of_service date,
     vehicle_id int references vehicle(vehicle_id)
-)
+);
+
+create table gas_fill_ups (
+    fill_up_id serial primary key,
+    price int,
+    miles_driven int,
+    type VARCHAR(50),
+    date_of_service date,
+    vehicle_id int references vehicle(vehicle_id)
+);
