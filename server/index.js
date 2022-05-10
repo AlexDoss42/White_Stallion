@@ -21,8 +21,8 @@ app.get('/api/vehicle/:user_id', async (req, res) => {
 app.post('/api/vehicle', (req, res) => {
   const { make, model, year, miles, user_id } = req.body;
   try {
-    const newVehicle = pool.query(`INSERT into vehicle (make, model, year, miles, owner) values ($1, $2, $3, $4, $5)`, [make, model, year, miles, user_id]);
-    res.json(newVehicle[0]);
+    pool.query(`INSERT into vehicle (make, model, year, miles, owner) values ($1, $2, $3, $4, $5)`, [make, model, year, miles, user_id]);
+    res.status(200);
   } catch (error) {
     console.error(error.message);
   }
@@ -66,8 +66,8 @@ app.post('/api/service', (req, res) => {
   const { price, miles_driven, part_name, date_of_service, vehicle_id } = req.body;
   
   try {
-    const newService = pool.query(`insert into service_records (price, miles_driven, part_name, date_of_service, vehicle_id) values ($1, $2, $3, $4, $5)`, [price, miles_driven, part_name, date_of_service, vehicle_id]);
-    res.json(newService[0]);
+    pool.query(`insert into service_records (price, miles_driven, part_name, date_of_service, vehicle_id) values ($1, $2, $3, $4, $5)`, [price, miles_driven, part_name, date_of_service, vehicle_id]);
+    res.status(200);
   } catch (error) {
     console.error(error.message);
   }
@@ -113,8 +113,8 @@ app.post('/api/service', (req, res) => {
   const { price, miles_driven, part_name, date_of_service, vehicle_id } = req.body;
   
   try {
-    const newService = pool.query(`INSERT INTO gas_full_ups (price, miles_driven, part_name, date_of_service, vehicle_id) values ($1, $2, $3, $4, $5)`, [price, miles_driven, part_name, date_of_service, vehicle_id]);
-    res.json(newService[0]);
+    pool.query(`INSERT INTO gas_full_ups (price, miles_driven, part_name, date_of_service, vehicle_id) values ($1, $2, $3, $4, $5)`, [price, miles_driven, part_name, date_of_service, vehicle_id]);
+    res.status(200);
   } catch (error) {
     console.error(error.message);
   }
