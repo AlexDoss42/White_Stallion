@@ -6,4 +6,4 @@ function EditGasFill() {
   )
 }
 
-export default EditGasFill
+export default EditGasFill;
