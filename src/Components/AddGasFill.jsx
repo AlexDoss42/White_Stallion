@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { useState } from 'react'
 
-function AddGasFill() {
+function AddGasFill({ vehicleRecord }) {
 
   const [formData, setFormData] = useState({
     price: '',
@@ -12,7 +12,7 @@ function AddGasFill() {
 });
 
 const addServiceRecord = (newServiceRecord) => {
-  Axios.post('/api/service', newServiceRecord).then(res => {
+  Axios.post(`/api/fill_up`, newServiceRecord).then(res => {
     setFormData({
       price: '',
       miles_driven: '',

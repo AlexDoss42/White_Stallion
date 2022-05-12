@@ -99,7 +99,7 @@ app.delete('/api/service/:service_id', (req, res) => {
 
 // Fill Up Endpoints
 
-app.get('/api/service/:vehicle_id', async (req, res) => {
+app.get('/api/fill_up/:vehicle_id', async (req, res) => {
   const { vehicle_id } = req.params
   try {
     const fillupRecords = await pool.query(`SELECT * FROM gas_full_ups WHERE vehicle_id = $1`, [vehicle_id]);
@@ -109,7 +109,7 @@ app.get('/api/service/:vehicle_id', async (req, res) => {
   }
 });
 
-app.post('/api/service', (req, res) => {
+app.post('/api/fill_up', (req, res) => {
   const { price, miles_driven, part_name, date_of_service, vehicle_id } = req.body;
   
   try {
@@ -120,7 +120,7 @@ app.post('/api/service', (req, res) => {
   }
 });
 
-app.put('/api/service/:fill_up_id', (req, res) => {
+app.put('/api/fill_up/:fill_up_id', (req, res) => {
   const { price, miles_driven, type, date_of_service, vehicle_id } = req.body;
   const { fill_up_id } = req.params
   
@@ -132,7 +132,7 @@ app.put('/api/service/:fill_up_id', (req, res) => {
   }
 });
 
-app.delete('/api/service/:fill_up_id', (req, res) => {
+app.delete('/api/fill_up/:fill_up_id', (req, res) => {
   const { fill_up_id } = req.params
   
   try {
