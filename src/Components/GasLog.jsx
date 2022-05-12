@@ -35,7 +35,7 @@ useEffect(() => {
       {fillUpLogs.map(fillUpRecord => {
           return <GasFillRecord
                   key = { fillUpRecord.id }
-                  serviceRecord = { fillUpRecord }
+                  fillUpRecord = { fillUpRecord }
                   updateFillUpRecord = { updateFillUpRecord }
                   deleteFillUpRecord = { deleteFillUpRecord }/>
         })}   
