@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import GasFillRecord from './GasFillRecord';
 
-function GasLog() {
+function GasLog({ vehicle_id }) {
   const [fillUpLogs, setFillUpLogs] = useState([])
 
 // Displays the complete Service log upon Mounting
@@ -22,7 +24,7 @@ useEffect(() => {
   const deleteFillUpRecord = (fillUpRecord) => {
     axios.delete(`/api/fill_up/${fillUpRecord.id}`, fillUpRecord)
     .then(res => { 
-      setServiceLogs(res.data);
+      setFillUpLogs(res.data);
     })
     .catch(err => console.log('Houston, we have a problem: ', err))
   }
@@ -40,7 +42,6 @@ useEffect(() => {
       </div>
       
     )
-}
 }
 
 export default GasLog;
