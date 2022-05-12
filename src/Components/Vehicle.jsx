@@ -7,6 +7,7 @@ function Vehicle({ vehicleRecord }) {
   return (
     <div className='vehicleRecord'>
         <div className='vehicleRecord'>
+          <img src={ vehicleRecord.img } alt={ vehicleRecord.model }/>
             <p>Make: { vehicleRecord.make }</p>
             <p>Model: { vehicleRecord.model }</p>
             <p>Year: { vehicleRecord.year }</p>

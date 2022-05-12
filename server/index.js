@@ -97,7 +97,7 @@ app.delete('/api/service/:service_id', (req, res) => {
 });
 
 
-// Service Endpoints
+// Fill Up Endpoints
 
 app.get('/api/service/:vehicle_id', async (req, res) => {
   const { vehicle_id } = req.params
