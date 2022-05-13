@@ -25,6 +25,7 @@ function ServiceRecord({ serviceRecord, updateServiceRecord, deleteServiceRecord
           <p>Miles Driven: { serviceRecord.miles_driven }</p>
           <p>Part Name: { serviceRecord.part_name }</p>
           <p>Date of Service: { serviceRecord.date_of_service }</p>
+          <img src={serviceRecord.photo} alt="service repair" />
         </div>
         <div className='serviceRecordButtons'>
           <i className="far fa-edit" onClick={toggleEdit} />
