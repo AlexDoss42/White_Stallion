@@ -21,8 +21,9 @@ function AddVehicle() {
         const types = ['image/png', 'image/jpeg'];
         if(!types.includes(e.target.files[0].type)) {
             setError('File type must be png or jpeg');
-            setImageUpload(null);
+            e.target.value = null;
         }
+        setImageUpload(e.target.files[0]);
     }
 
     const uploadImage = () => {
@@ -69,7 +70,7 @@ function AddVehicle() {
   return (
     <form className='addInputs'>
         <input
-            onChange={(e) => setImageUpload(e.target.files[0])}
+            onChange={(e) => selectImage(e)}
             name="car-image"
             type="file"
         />
