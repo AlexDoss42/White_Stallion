@@ -7,6 +7,7 @@ import { v4 } from 'uuid';
 import { Link } from 'react-router-dom';
 
 function AddVehicle() {
+    const [error, setError]  = useState('');
     const [imageUpload, setImageUpload] = useState();
     const [vehicleData, setVehicleData] = useState({
         make: '',
@@ -15,6 +16,14 @@ function AddVehicle() {
         miles: 0,
         user_id: 1
     });
+
+    const selectImage = (e) => {
+        const types = ['image/png', 'image/jpeg'];
+        if(!types.includes(e.target.files[0].type)) {
+            setError('File type must be png or jpeg');
+            setImageUpload(null);
+        }
+    }
 
     const uploadImage = () => {
         if (imageUpload == null) return;
@@ -39,13 +48,17 @@ function AddVehicle() {
     const handleClick = () => {
         let { make, model, year, miles } = vehicleData;
         
-        if(make === '') {
+        
+        if(make === '') { 
             alert('Make is required')
-        } else if(model === '') {
+        }
+        if(model === '') {
             alert('Model is required')
-        } else if(year === '') {
+        }
+        if(year === '') {
             alert('Year is required')
-        } else if(miles === '') {
+        }
+        if(miles === '') {
             alert('Miles are required')
         } else {
             addVehicle(vehicleData);
@@ -60,6 +73,7 @@ function AddVehicle() {
             name="car-image"
             type="file"
         />
+        {error && <p>{error}</p>}
         <input
         onChange={(e) => setVehicleData({ ...vehicleData, make: e.target.value })}
         name = 'make'
