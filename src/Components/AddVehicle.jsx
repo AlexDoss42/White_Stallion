@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { storage } from '../firebase';
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from 'uuid';
+
 import { Link } from 'react-router-dom';
 
 function AddVehicle() {
+    const [imageUpload, setImageUpload] = useState();
     const [vehicleData, setVehicleData] = useState({
         make: '',
         model: '',
@@ -10,6 +15,14 @@ function AddVehicle() {
         miles: 0,
         user_id: 1
     });
+
+    const uploadImage = () => {
+        if (imageUpload == null) return;
+        const imageRef = ref(storage, `images/vehicles/${imageUpload.name + v4()}`);
+        uploadBytes(imageRef, imageUpload).then(() => {
+            alert("Image Uploaded");
+        })
+    }
 
     const addVehicle = (newVehicle) => {
         axios.post('/api/vehicle', newVehicle).then(res => {
@@ -20,7 +33,6 @@ function AddVehicle() {
                 miles: 0,
                 user_id: 1
             });
-            window.location = "/garage";
         }).catch(err => console.log('Houston, we have a problem: ', err))
     };
 
@@ -37,11 +49,17 @@ function AddVehicle() {
             alert('Miles are required')
         } else {
             addVehicle(vehicleData);
+            uploadImage();
         }
     };
 
   return (
     <form className='addInputs'>
+        <input
+            onChange={(e) => setImageUpload(e.target.files[0])}
+            name="car-image"
+            type="file"
+        />
         <input
         onChange={(e) => setVehicleData({ ...vehicleData, make: e.target.value })}
         name = 'make'
