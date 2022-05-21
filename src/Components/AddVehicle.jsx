@@ -16,7 +16,7 @@ function AddVehicle() {
         miles: 0,
         user_id: 1
     });
-
+    
     const selectImage = (e) => {
         const types = ['image/png', 'image/jpeg'];
         if(!types.includes(e.target.files[0].type)) {
@@ -25,7 +25,7 @@ function AddVehicle() {
         }
         setImageUpload(e.target.files[0]);
     }
-
+    
     const uploadImage = () => {
         if (imageUpload == null) return;
         const imageRef = ref(storage, `images/vehicles/${imageUpload.name + v4()}`);
@@ -33,10 +33,11 @@ function AddVehicle() {
             alert("Image Uploaded");
         })
     }
-
+    
     const addVehicle = (newVehicle) => {
         axios.post('/api/vehicle', newVehicle).then(res => {
             setVehicleData({
+                // you need to generate the vehicle id so you can store it in postgres and firebase, not letting it be serialized
                 make: '',
                 model: '',
                 year: '',
