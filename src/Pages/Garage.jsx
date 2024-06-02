@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
+import VehicleList from '../Components/VehicleList';
 
 function Garage() {
 
@@ -8,7 +9,8 @@ function Garage() {
   return (
     <div>
         <Header />
-          Garage
+        Welcome to your Garage!
+          <VehicleList />
         <Footer /> 
     </div>
   )
